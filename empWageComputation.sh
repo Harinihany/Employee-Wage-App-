@@ -175,5 +175,18 @@ workHours="$( getWorkingHours $(( RANDOM%3 )) )"
 echo "Work hours from function getWorkingHours()::::::::::>>> $workHours "
 totalWorkHours=$(( $totalWorkHours + $workHours ))
 echo -e "TotalWorkHours: $totalWorkHours\n"
+
+#Using array to store day-wise salary
+empDailyWage[$totalWorkingDays]="$( calculateDailyWage $workHours )"
+
 done
+totalSalary=$(( $totalWorkHours * $EMP_RATE_PER_HR ));
+echo -e "\n::::::::::::Printing Days from array::::::"
+echo ${!empDailyWage[@]}
+
+echo -e "\n::::::::::::Printing salary stored day wise in an array:::::::::::::::"
+echo ${empDailyWage[@]}
+
+
+
 
